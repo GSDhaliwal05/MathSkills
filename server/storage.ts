@@ -1,6 +1,22 @@
-import { mathTopics, searchableContent, type MathTopic, type InsertMathTopic, type SearchableContent, type InsertSearchableContent } from "@shared/schema";
+import { 
+  mathTopics, 
+  searchableContent, 
+  users,
+  type MathTopic, 
+  type InsertMathTopic, 
+  type SearchableContent, 
+  type InsertSearchableContent,
+  type User,
+  type UpsertUser
+} from "@shared/schema";
+import { db } from "./db";
+import { eq } from "drizzle-orm";
 
 export interface IStorage {
+  // User operations for authentication
+  getUser(id: string): Promise<User | undefined>;
+  upsertUser(user: UpsertUser): Promise<User>;
+  // Math content operations
   getMathTopics(): Promise<MathTopic[]>;
   getMathTopicBySlug(slug: string): Promise<MathTopic | undefined>;
   searchContent(query: string): Promise<SearchableContent[]>;
@@ -8,71 +24,58 @@ export interface IStorage {
   createSearchableContent(content: InsertSearchableContent): Promise<SearchableContent>;
 }
 
-export class MemStorage implements IStorage {
-  private topics: Map<number, MathTopic>;
-  private searchableItems: Map<number, SearchableContent>;
-  private currentTopicId: number;
-  private currentSearchId: number;
-
-  constructor() {
-    this.topics = new Map();
-    this.searchableItems = new Map();
-    this.currentTopicId = 1;
-    this.currentSearchId = 1;
-    this.initializeData();
+export class DatabaseStorage implements IStorage {
+  // User operations for authentication
+  async getUser(id: string): Promise<User | undefined> {
+    const [user] = await db.select().from(users).where(eq(users.id, id));
+    return user;
   }
 
-  private initializeData() {
-    // Initialize with empty topics - content will be populated from frontend data
-    const topicSlugs = [
-      'numbers', 'exponents', 'integers', 'financial', 
-      'data', 'fractions', 'algebra', 'measurements'
-    ];
-    
-    topicSlugs.forEach(slug => {
-      const topic: MathTopic = {
-        id: this.currentTopicId++,
-        slug,
-        title: slug.charAt(0).toUpperCase() + slug.slice(1),
-        description: `${slug} curriculum content`,
-        icon: 'fas fa-calculator',
-        color: '#4A90E2',
-        content: { definitions: [], examples: [], questions: [] }
-      };
-      this.topics.set(topic.id, topic);
-    });
+  async upsertUser(userData: UpsertUser): Promise<User> {
+    const [user] = await db
+      .insert(users)
+      .values(userData)
+      .onConflictDoUpdate({
+        target: users.id,
+        set: {
+          ...userData,
+          updatedAt: new Date(),
+        },
+      })
+      .returning();
+    return user;
   }
 
+  // Math content operations
   async getMathTopics(): Promise<MathTopic[]> {
-    return Array.from(this.topics.values());
+    return await db.select().from(mathTopics);
   }
 
   async getMathTopicBySlug(slug: string): Promise<MathTopic | undefined> {
-    return Array.from(this.topics.values()).find(topic => topic.slug === slug);
+    const [topic] = await db.select().from(mathTopics).where(eq(mathTopics.slug, slug));
+    return topic;
   }
 
   async searchContent(query: string): Promise<SearchableContent[]> {
+    const results = await db.select().from(searchableContent);
     const lowerQuery = query.toLowerCase();
-    return Array.from(this.searchableItems.values()).filter(item => 
+    
+    return results.filter(item => 
       item.title.toLowerCase().includes(lowerQuery) ||
       item.content.toLowerCase().includes(lowerQuery) ||
-      (item.searchTerms && item.searchTerms.some(term => term.toLowerCase().includes(lowerQuery)))
+      (item.searchTerms && item.searchTerms.some(term => term?.toLowerCase().includes(lowerQuery)))
     );
   }
 
   async createMathTopic(insertTopic: InsertMathTopic): Promise<MathTopic> {
-    const id = this.currentTopicId++;
-    const topic: MathTopic = { ...insertTopic, id };
-    this.topics.set(id, topic);
+    const [topic] = await db.insert(mathTopics).values(insertTopic).returning();
     return topic;
   }
 
   async createSearchableContent(insertContent: InsertSearchableContent): Promise<SearchableContent> {
-    const id = this.currentSearchId++;
-    const content: SearchableContent = { ...insertContent, id };
-    this.searchableItems.set(id, content);
+    const [content] = await db.insert(searchableContent).values(insertContent).returning();
     return content;
   }
 }
 
-export const storage = new MemStorage();
+export const storage = new DatabaseStorage();

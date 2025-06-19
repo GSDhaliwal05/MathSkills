@@ -3,11 +3,13 @@ import { Link, useLocation } from 'wouter';
 import { motion, AnimatePresence } from 'framer-motion';
 import { SearchBar } from './SearchBar';
 import { topicInfo } from '@/data/mathContent';
+import { useAuth } from '@/hooks/useAuth';
 
 export function Navigation() {
   const [location] = useLocation();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { user, isLoading, isAuthenticated } = useAuth();
 
   const topics = Object.entries(topicInfo);
 
@@ -70,6 +72,39 @@ export function Navigation() {
 
             {/* Search Bar */}
             <SearchBar />
+
+            {/* Auth Section */}
+            <div className="flex items-center space-x-4">
+              {isLoading ? (
+                <div className="w-8 h-8 bg-gray-200 rounded-full animate-pulse"></div>
+              ) : isAuthenticated && user ? (
+                <div className="flex items-center space-x-3">
+                  {user.profileImageUrl && (
+                    <img 
+                      src={user.profileImageUrl} 
+                      alt="Profile" 
+                      className="w-8 h-8 rounded-full object-cover"
+                    />
+                  )}
+                  <span className="text-gray-700 font-medium">
+                    {user.firstName || user.email}
+                  </span>
+                  <a 
+                    href="/api/logout" 
+                    className="text-sm text-gray-600 hover:text-gray-800 underline"
+                  >
+                    Logout
+                  </a>
+                </div>
+              ) : (
+                <a 
+                  href="/api/login" 
+                  className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium"
+                >
+                  Login with Replit
+                </a>
+              )}
+            </div>
           </div>
 
           {/* Mobile Menu Button */}
@@ -96,7 +131,43 @@ export function Navigation() {
           >
             <div className="px-4 py-4 space-y-3">
               <SearchBar isMobile />
-              <div className="space-y-2">
+              
+              {/* Mobile Auth Section */}
+              <div className="border-t pt-3">
+                {isLoading ? (
+                  <div className="w-8 h-8 bg-gray-200 rounded-full animate-pulse"></div>
+                ) : isAuthenticated && user ? (
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center space-x-3">
+                      {user.profileImageUrl && (
+                        <img 
+                          src={user.profileImageUrl} 
+                          alt="Profile" 
+                          className="w-8 h-8 rounded-full object-cover"
+                        />
+                      )}
+                      <span className="text-gray-700 font-medium">
+                        {user.firstName || user.email}
+                      </span>
+                    </div>
+                    <a 
+                      href="/api/logout" 
+                      className="text-sm text-gray-600 hover:text-gray-800 underline"
+                    >
+                      Logout
+                    </a>
+                  </div>
+                ) : (
+                  <a 
+                    href="/api/login" 
+                    className="w-full bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium text-center block"
+                  >
+                    Login with Replit
+                  </a>
+                )}
+              </div>
+              
+              <div className="space-y-2 border-t pt-3">
                 {topics.map(([slug, info]) => (
                   <Link
                     key={slug}
