@@ -71,6 +71,8 @@ function Router() {
           
           <div className="border-t border-gray-600 mt-8 pt-8 text-center text-gray-300">
             <p>&copy; 2025 Math Skills™</p>
+            <p>All rights reserved.</p>
+            <p>Developed by <a href="https://github.com/Guranshd05" className="text-white hover:underline">Guransh Dhaliwal</a></p>
           </div>
         </div>
       </footer>

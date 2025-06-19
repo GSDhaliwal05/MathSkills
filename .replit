@@ -20,6 +20,3 @@ author = "agent"
 task = "shell.exec"
 args = "npm run start"
 waitForPort = 5000
-
-[nix]
-channel = "stable-24_05"
