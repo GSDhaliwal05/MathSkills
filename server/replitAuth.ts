@@ -1,4 +1,3 @@
-
 import session from "express-session";
 import passport from "passport";
 import { Strategy as GoogleStrategy } from "passport-google-oauth20";
@@ -77,7 +76,10 @@ export async function setupAuth(app: Express) {
 
     app.get("/api/auth/google/callback", 
       passport.authenticate("google", { failureRedirect: "/" }),
-      (req, res) => {
+      (req: any, res) => {
+        // Set session data for compatibility with existing auth system
+        req.session.userId = req.user.id;
+        req.session.user = req.user;
         res.redirect("/");
       }
     );
@@ -94,10 +96,10 @@ export async function setupAuth(app: Express) {
         };
 
         const user = await storage.upsertUser(demoUser);
-        
+
         req.session.userId = user.id;
         req.session.user = user;
-        
+
         res.redirect("/");
       } catch (error) {
         console.error("Login error:", error);
