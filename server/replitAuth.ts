@@ -1,3 +1,4 @@
+
 import session from "express-session";
 import passport from "passport";
 import { Strategy as GoogleStrategy } from "passport-google-oauth20";
@@ -33,14 +34,8 @@ export async function setupAuth(app: Express) {
   app.use(passport.initialize());
   app.use(passport.session());
 
-  console.log("🚀 Setting up Google OAuth authentication");
-  
   if (!process.env.GOOGLE_CLIENT_ID || !process.env.GOOGLE_CLIENT_SECRET) {
-    console.error("🚨 FATAL ERROR: Missing Google OAuth secrets!");
-    console.error("💡 Add these secrets in the Secrets tool:");
-    console.error("   GOOGLE_CLIENT_ID = 24059398734-53ujc0ikjkv1lb96cisvjvmdm0tf8o5f.apps.googleusercontent.com");
-    console.error("   GOOGLE_CLIENT_SECRET = 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");
-    process.exit(1);
+    throw new Error("Google OAuth credentials are required");
   }
   
   passport.use(new GoogleStrategy({
@@ -48,7 +43,6 @@ export async function setupAuth(app: Express) {
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     callbackURL: "/api/auth/google/callback"
   }, async (accessToken, refreshToken, profile, done) => {
-    console.log("🎉 Google OAuth callback received for user:", profile.emails?.[0]?.value);
     try {
       const user = {
         id: profile.id,
@@ -78,7 +72,6 @@ export async function setupAuth(app: Express) {
     }
   });
 
-  // Google OAuth routes
   app.get("/api/login", passport.authenticate("google", {
     scope: ["profile", "email"]
   }));
