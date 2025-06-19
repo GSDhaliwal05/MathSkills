@@ -16,7 +16,7 @@ export default function Home() {
       >
         <div className="grid md:grid-cols-2 gap-8 items-center">
           <div>
-            <h1 className="text-4xl md:text-5xl font-bold mb-4 font-['Poppins']">Welcome to Math Master</h1>
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 font-['Poppins']">Welcome to Math Skills</h1>
             <p className="text-xl opacity-90 mb-6">Your complete guide to Grade 7 mathematics. Master every concept with clear explanations, step-by-step examples, and engaging practice questions.</p>
             <motion.button
               whileHover={{ scale: 1.05 }}
@@ -71,8 +71,8 @@ export default function Home() {
       >
         <div className="grid md:grid-cols-2 gap-8 items-center">
           <div>
-            <h2 className="text-3xl font-bold text-gray-800 mb-4 font-['Poppins']">About Math Master</h2>
-            <p className="text-gray-600 mb-4">Math Master is designed specifically for Grade 7 students to build confidence and mastery in mathematics. Our comprehensive curriculum covers all essential topics with:</p>
+            <h2 className="text-3xl font-bold text-gray-800 mb-4 font-['Poppins']">About Math Skills</h2>
+            <p className="text-gray-600 mb-4">Math Skills is designed specifically for Grade 7 students to build confidence and mastery in mathematics. Our comprehensive curriculum covers all essential topics with:</p>
             <ul className="space-y-2 text-gray-600">
               <motion.li 
                 initial={{ opacity: 0, x: -20 }}

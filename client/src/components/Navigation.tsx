@@ -23,7 +23,7 @@ export function Navigation() {
               <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
                 <i className="fas fa-calculator text-white text-xl"></i>
               </div>
-              <span className="text-2xl font-bold text-gray-800 font-['Poppins']">Math Master</span>
+              <span className="text-2xl font-bold text-gray-800 font-['Poppins']">Math Skills</span>
             </Link>
           </div>
 

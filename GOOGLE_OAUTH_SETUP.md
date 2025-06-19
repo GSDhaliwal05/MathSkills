@@ -1,6 +1,6 @@
 # Google OAuth Setup Instructions
 
-To enable Google login for Math Master, follow these steps:
+To enable Google login for Math Skills, follow these steps:
 
 ## 1. Create Google Cloud Project
 1. Go to [Google Cloud Console](https://console.cloud.google.com/)

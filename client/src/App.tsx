@@ -43,7 +43,7 @@ function Router() {
                 <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
                   <i className="fas fa-calculator text-white"></i>
                 </div>
-                <span className="text-xl font-bold font-['Poppins']">Math Master</span>
+                <span className="text-xl font-bold font-['Poppins']">Math Skills</span>
               </div>
               <p className="text-gray-300">Your complete guide to Grade 7 mathematics success.</p>
             </div>
@@ -70,7 +70,7 @@ function Router() {
           </div>
           
           <div className="border-t border-gray-600 mt-8 pt-8 text-center text-gray-300">
-            <p>&copy; 2024 Math Master. Designed for Grade 7 student success.</p>
+            <p>&copy; 2025 Math Skills™</p>
           </div>
         </div>
       </footer>
