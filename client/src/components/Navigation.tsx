@@ -42,7 +42,7 @@ export function Navigation() {
                   transition={{ duration: 0.2 }}
                 />
               </button>
-              
+
               <AnimatePresence>
                 {isDropdownOpen && (
                   <motion.div
@@ -131,7 +131,7 @@ export function Navigation() {
           >
             <div className="px-4 py-4 space-y-3">
               <SearchBar isMobile />
-              
+
               {/* Mobile Auth Section */}
               <div className="border-t pt-3">
                 {isLoading ? (
@@ -166,7 +166,7 @@ export function Navigation() {
                   </a>
                 )}
               </div>
-              
+
               <div className="space-y-2 border-t pt-3">
                 {topics.map(([slug, info]) => (
                   <Link
