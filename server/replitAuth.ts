@@ -33,19 +33,7 @@ export async function setupAuth(app: Express) {
   app.use(passport.initialize());
   app.use(passport.session());
 
-  // Debug environment variables
-  console.log("🔍 Google OAuth Setup Check:");
-  console.log("- GOOGLE_CLIENT_ID:", process.env.GOOGLE_CLIENT_ID ? `✅ SET (${process.env.GOOGLE_CLIENT_ID.substring(0, 10)}...)` : "❌ MISSING");
-  console.log("- GOOGLE_CLIENT_SECRET:", process.env.GOOGLE_CLIENT_SECRET ? `✅ SET (${process.env.GOOGLE_CLIENT_SECRET.substring(0, 6)}...)` : "❌ MISSING");
-  console.log("- All env vars:", Object.keys(process.env).filter(key => key.includes('GOOGLE')));
-
-  // Force Google OAuth Strategy - NO DEMO FALLBACK
-  console.log("🚀 Attempting Google OAuth authentication");
-  console.log("🔍 Environment check:");
-  console.log("- NODE_ENV:", process.env.NODE_ENV);
-  console.log("- GOOGLE_CLIENT_ID:", process.env.GOOGLE_CLIENT_ID ? `✅ SET (${process.env.GOOGLE_CLIENT_ID.substring(0, 10)}...)` : "❌ MISSING");
-  console.log("- GOOGLE_CLIENT_SECRET:", process.env.GOOGLE_CLIENT_SECRET ? `✅ SET (${process.env.GOOGLE_CLIENT_SECRET.substring(0, 6)}...)` : "❌ MISSING");
-  console.log("- All Google env vars:", Object.keys(process.env).filter(key => key.includes('GOOGLE')));
+  console.log("🚀 Setting up Google OAuth authentication");
   
   if (!process.env.GOOGLE_CLIENT_ID || !process.env.GOOGLE_CLIENT_SECRET) {
     console.error("🚨 FATAL ERROR: Missing Google OAuth secrets!");
@@ -98,7 +86,6 @@ export async function setupAuth(app: Express) {
   app.get("/api/auth/google/callback", 
     passport.authenticate("google", { failureRedirect: "/" }),
     (req: any, res) => {
-      // Set session data for compatibility with existing auth system
       req.session.userId = req.user.id;
       req.session.user = req.user;
       res.redirect("/");
