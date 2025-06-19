@@ -40,12 +40,19 @@ export async function setupAuth(app: Express) {
   console.log("- All env vars:", Object.keys(process.env).filter(key => key.includes('GOOGLE')));
 
   // Force Google OAuth Strategy - NO DEMO FALLBACK
-  console.log("🚀 Using Google OAuth authentication");
+  console.log("🚀 Attempting Google OAuth authentication");
+  console.log("🔍 Environment check:");
+  console.log("- NODE_ENV:", process.env.NODE_ENV);
   console.log("- GOOGLE_CLIENT_ID:", process.env.GOOGLE_CLIENT_ID ? `✅ SET (${process.env.GOOGLE_CLIENT_ID.substring(0, 10)}...)` : "❌ MISSING");
   console.log("- GOOGLE_CLIENT_SECRET:", process.env.GOOGLE_CLIENT_SECRET ? `✅ SET (${process.env.GOOGLE_CLIENT_SECRET.substring(0, 6)}...)` : "❌ MISSING");
+  console.log("- All Google env vars:", Object.keys(process.env).filter(key => key.includes('GOOGLE')));
   
   if (!process.env.GOOGLE_CLIENT_ID || !process.env.GOOGLE_CLIENT_SECRET) {
-    throw new Error("GOOGLE_CLIENT_ID and GOOGLE_CLIENT_SECRET must be set in Secrets!");
+    console.error("🚨 FATAL ERROR: Missing Google OAuth secrets!");
+    console.error("💡 Add these secrets in the Secrets tool:");
+    console.error("   GOOGLE_CLIENT_ID = 24059398734-53ujc0ikjkv1lb96cisvjvmdm0tf8o5f.apps.googleusercontent.com");
+    console.error("   GOOGLE_CLIENT_SECRET = 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");
+    process.exit(1);
   }
   
   passport.use(new GoogleStrategy({
