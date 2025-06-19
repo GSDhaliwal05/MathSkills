@@ -35,8 +35,9 @@ export async function setupAuth(app: Express) {
 
   // Debug environment variables
   console.log("🔍 Google OAuth Setup Check:");
-  console.log("- GOOGLE_CLIENT_ID:", process.env.GOOGLE_CLIENT_ID ? "✅ SET" : "❌ MISSING");
-  console.log("- GOOGLE_CLIENT_SECRET:", process.env.GOOGLE_CLIENT_SECRET ? "✅ SET" : "❌ MISSING");
+  console.log("- GOOGLE_CLIENT_ID:", process.env.GOOGLE_CLIENT_ID ? `✅ SET (${process.env.GOOGLE_CLIENT_ID.substring(0, 10)}...)` : "❌ MISSING");
+  console.log("- GOOGLE_CLIENT_SECRET:", process.env.GOOGLE_CLIENT_SECRET ? `✅ SET (${process.env.GOOGLE_CLIENT_SECRET.substring(0, 6)}...)` : "❌ MISSING");
+  console.log("- All env vars:", Object.keys(process.env).filter(key => key.includes('GOOGLE')));
 
   // Configure Google OAuth Strategy
   if (process.env.GOOGLE_CLIENT_ID && process.env.GOOGLE_CLIENT_SECRET) {
