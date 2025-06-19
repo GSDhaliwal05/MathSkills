@@ -70,6 +70,36 @@ export const mathContent: Record<string, TopicContent> = {
         question: "What is the LCM of 6 and 9?",
         answer: "18",
         explanation: "Multiples of 6: 6, 12, 18, 24... Multiples of 9: 9, 18, 27... The least common multiple is 18."
+      },
+      {
+        id: "num4",
+        question: "What is the GCF of 24 and 36?",
+        answer: "12",
+        explanation: "Factors of 24: 1, 2, 3, 4, 6, 8, 12, 24. Factors of 36: 1, 2, 3, 4, 6, 9, 12, 18, 36. The greatest common factor is 12."
+      },
+      {
+        id: "num5",
+        question: "List the first 5 multiples of 7.",
+        answer: "7, 14, 21, 28, 35",
+        explanation: "Multiples are found by multiplying 7 by 1, 2, 3, 4, and 5."
+      },
+      {
+        id: "num6",
+        question: "Is 21 prime or composite?",
+        answer: "Composite",
+        explanation: "21 is composite because it has factors other than 1 and itself: 1, 3, 7, 21."
+      },
+      {
+        id: "num7",
+        question: "What is the LCM of 4 and 10?",
+        answer: "20",
+        explanation: "Multiples of 4: 4, 8, 12, 16, 20... Multiples of 10: 10, 20, 30... The LCM is 20."
+      },
+      {
+        id: "num8",
+        question: "What are all the factors of 16?",
+        answer: "1, 2, 4, 8, 16",
+        explanation: "Factors are numbers that divide evenly into 16: 16÷1=16, 16÷2=8, 16÷4=4, 16÷8=2, 16÷16=1."
       }
     ]
   },
@@ -135,6 +165,42 @@ export const mathContent: Record<string, TopicContent> = {
         question: "Write 0.000032 in scientific notation",
         answer: "3.2 × 10⁻⁵",
         explanation: "Move decimal 5 places right to get 3.2, use negative exponent."
+      },
+      {
+        id: "exp3",
+        question: "Calculate 3² × 2³",
+        answer: "72",
+        explanation: "3² = 9, 2³ = 8, so 9 × 8 = 72"
+      },
+      {
+        id: "exp4",
+        question: "What is √81?",
+        answer: "9",
+        explanation: "9 × 9 = 81, so the square root of 81 is 9"
+      },
+      {
+        id: "exp5",
+        question: "Using BEDMAS, calculate: 4 + 3² × 2",
+        answer: "22",
+        explanation: "Exponents first: 3² = 9. Then multiplication: 9 × 2 = 18. Finally addition: 4 + 18 = 22"
+      },
+      {
+        id: "exp6",
+        question: "Write 650,000 in scientific notation",
+        answer: "6.5 × 10⁵",
+        explanation: "Move decimal 5 places left to get 6.5, so it's 6.5 × 10⁵"
+      },
+      {
+        id: "exp7",
+        question: "Calculate (2³)²",
+        answer: "64",
+        explanation: "2³ = 8, then 8² = 64. Or use the power rule: (2³)² = 2⁶ = 64"
+      },
+      {
+        id: "exp8",
+        question: "What is 4⁰?",
+        answer: "1",
+        explanation: "Any number to the power of 0 equals 1"
       }
     ]
   },
@@ -191,6 +257,42 @@ export const mathContent: Record<string, TopicContent> = {
         question: "Calculate: (-6) × (-7)",
         answer: "+42",
         explanation: "Same signs (both negative): result is positive. 6 × 7 = 42"
+      },
+      {
+        id: "int3",
+        question: "Calculate: (-15) + (-9)",
+        answer: "-24",
+        explanation: "Same signs (both negative): add and keep the negative sign. 15 + 9 = 24, so the answer is -24."
+      },
+      {
+        id: "int4",
+        question: "Calculate: (+18) - (+25)",
+        answer: "-7",
+        explanation: "Subtracting a positive is like adding a negative: 18 + (-25) = -7."
+      },
+      {
+        id: "int5",
+        question: "Calculate: (-12) ÷ (+3)",
+        answer: "-4",
+        explanation: "Different signs: result is negative. 12 ÷ 3 = 4, so the answer is -4."
+      },
+      {
+        id: "int6",
+        question: "Calculate: (+5) × (-8)",
+        answer: "-40",
+        explanation: "Different signs: result is negative. 5 × 8 = 40, so the answer is -40."
+      },
+      {
+        id: "int7",
+        question: "What is the opposite of -17?",
+        answer: "+17",
+        explanation: "The opposite of a negative number is the positive version of that number."
+      },
+      {
+        id: "int8",
+        question: "Using BEDMAS, calculate: (-3)² + 4 × (-2)",
+        answer: "1",
+        explanation: "Exponents first: (-3)² = 9. Then multiplication: 4 × (-2) = -8. Finally addition: 9 + (-8) = 1."
       }
     ]
   },
@@ -257,6 +359,42 @@ export const mathContent: Record<string, TopicContent> = {
         question: "Calculate simple interest: $500 at 4% for 2 years",
         answer: "$40",
         explanation: "I = P × r × t = $500 × 0.04 × 2 = $40"
+      },
+      {
+        id: "fin3",
+        question: "A $120 item has 15% tax added. What is the total cost?",
+        answer: "$138",
+        explanation: "Tax: $120 × 0.15 = $18. Total: $120 + $18 = $138"
+      },
+      {
+        id: "fin4",
+        question: "Convert 0.75 to a percentage",
+        answer: "75%",
+        explanation: "Multiply by 100: 0.75 × 100 = 75%"
+      },
+      {
+        id: "fin5",
+        question: "What is 25% of $200?",
+        answer: "$50",
+        explanation: "25% = 0.25, so $200 × 0.25 = $50"
+      },
+      {
+        id: "fin6",
+        question: "A $60 game is on sale for 40% off. What's the discount amount?",
+        answer: "$24",
+        explanation: "Discount: $60 × 0.40 = $24"
+      },
+      {
+        id: "fin7",
+        question: "Calculate interest: $800 principal, 6% rate, 18 months",
+        answer: "$72",
+        explanation: "18 months = 1.5 years. I = $800 × 0.06 × 1.5 = $72"
+      },
+      {
+        id: "fin8",
+        question: "A $45 meal has 18% tip added. What's the total?",
+        answer: "$53.10",
+        explanation: "Tip: $45 × 0.18 = $8.10. Total: $45 + $8.10 = $53.10"
       }
     ]
   },
@@ -322,6 +460,42 @@ export const mathContent: Record<string, TopicContent> = {
         question: "What type of graph is best for showing how temperature changes throughout a day?",
         answer: "Line Graph",
         explanation: "Line graphs are best for showing changes over time."
+      },
+      {
+        id: "data3",
+        question: "Find the median of: 3, 7, 1, 9, 5",
+        answer: "5",
+        explanation: "First arrange in order: 1, 3, 5, 7, 9. The middle value is 5."
+      },
+      {
+        id: "data4",
+        question: "What graph type shows parts of a whole?",
+        answer: "Circle Graph",
+        explanation: "Circle graphs (pie charts) divide a circle into sections to show how parts make up the whole."
+      },
+      {
+        id: "data5",
+        question: "Find the mean of: 15, 20, 25, 30",
+        answer: "22.5",
+        explanation: "Sum: 15 + 20 + 25 + 30 = 90. Mean: 90 ÷ 4 = 22.5"
+      },
+      {
+        id: "data6",
+        question: "Which graph type compares different categories?",
+        answer: "Bar Graph",
+        explanation: "Bar graphs use bars of different heights to compare quantities across categories."
+      },
+      {
+        id: "data7",
+        question: "Find the median of: 12, 8, 15, 6, 20, 10",
+        answer: "11",
+        explanation: "Arrange in order: 6, 8, 10, 12, 15, 20. Middle values are 10 and 12. Median: (10 + 12) ÷ 2 = 11"
+      },
+      {
+        id: "data8",
+        question: "What is a survey used for?",
+        answer: "Collecting data",
+        explanation: "A survey is a method of collecting data by asking questions to a group of people."
       }
     ]
   },
@@ -384,8 +558,44 @@ export const mathContent: Record<string, TopicContent> = {
       {
         id: "frac2",
         question: "Calculate: 1/4 × 2/3",
-        answer: "2/12 = 1/6",
+        answer: "1/6",
         explanation: "Multiply numerators: 1 × 2 = 2. Multiply denominators: 4 × 3 = 12. Simplify: 2/12 = 1/6"
+      },
+      {
+        id: "frac3",
+        question: "Add: 1/3 + 1/6",
+        answer: "1/2",
+        explanation: "Common denominator is 6. Convert: 1/3 = 2/6. Add: 2/6 + 1/6 = 3/6 = 1/2"
+      },
+      {
+        id: "frac4",
+        question: "Convert 3/5 to a decimal",
+        answer: "0.6",
+        explanation: "Divide numerator by denominator: 3 ÷ 5 = 0.6"
+      },
+      {
+        id: "frac5",
+        question: "Subtract: 5/8 - 1/4",
+        answer: "3/8",
+        explanation: "Common denominator is 8. Convert: 1/4 = 2/8. Subtract: 5/8 - 2/8 = 3/8"
+      },
+      {
+        id: "frac6",
+        question: "Calculate: 2/3 ÷ 1/4",
+        answer: "8/3",
+        explanation: "Multiply by reciprocal: 2/3 × 4/1 = 8/3"
+      },
+      {
+        id: "frac7",
+        question: "Convert 0.25 to a fraction",
+        answer: "1/4",
+        explanation: "0.25 = 25/100. Simplify by dividing by 25: 25÷25 = 1, 100÷25 = 4"
+      },
+      {
+        id: "frac8",
+        question: "What is 3/4 as a percentage?",
+        answer: "75%",
+        explanation: "Convert to decimal: 3 ÷ 4 = 0.75. Convert to percent: 0.75 × 100 = 75%"
       }
     ]
   },
@@ -444,6 +654,48 @@ export const mathContent: Record<string, TopicContent> = {
         question: "Solve: x + 7 = 15",
         answer: "x = 8",
         explanation: "Subtract 7 from both sides: x = 15 - 7 = 8"
+      },
+      {
+        id: "alg2",
+        question: "Simplify: 4x + 3x - 2",
+        answer: "7x - 2",
+        explanation: "Combine like terms: 4x + 3x = 7x. The expression becomes 7x - 2"
+      },
+      {
+        id: "alg3",
+        question: "Solve: 3x = 21",
+        answer: "x = 7",
+        explanation: "Divide both sides by 3: x = 21 ÷ 3 = 7"
+      },
+      {
+        id: "alg4",
+        question: "What is the coefficient of x in 9x + 5?",
+        answer: "9",
+        explanation: "The coefficient is the number multiplied by the variable. In 9x, the coefficient is 9"
+      },
+      {
+        id: "alg5",
+        question: "Solve: 2x - 6 = 10",
+        answer: "x = 8",
+        explanation: "Add 6 to both sides: 2x = 16. Divide by 2: x = 8"
+      },
+      {
+        id: "alg6",
+        question: "Evaluate 3n + 4 when n = 5",
+        answer: "19",
+        explanation: "Substitute n = 5: 3(5) + 4 = 15 + 4 = 19"
+      },
+      {
+        id: "alg7",
+        question: "Combine like terms: 8y - 3y + 2",
+        answer: "5y + 2",
+        explanation: "Combine y terms: 8y - 3y = 5y. The expression becomes 5y + 2"
+      },
+      {
+        id: "alg8",
+        question: "Solve: x/4 = 12",
+        answer: "x = 48",
+        explanation: "Multiply both sides by 4: x = 12 × 4 = 48"
       },
       {
         id: "alg2",
@@ -516,6 +768,42 @@ export const mathContent: Record<string, TopicContent> = {
         question: "What type of angle is 125°?",
         answer: "Obtuse Angle",
         explanation: "125° is greater than 90° but less than 180°, so it's obtuse."
+      },
+      {
+        id: "meas3",
+        question: "Find the area of a circle with radius 6 cm",
+        answer: "113.04 cm²",
+        explanation: "A = πr² = π × 6² = π × 36 ≈ 3.14 × 36 = 113.04 cm²"
+      },
+      {
+        id: "meas4",
+        question: "What is the diameter of a circle with radius 8 cm?",
+        answer: "16 cm",
+        explanation: "Diameter = 2 × radius = 2 × 8 = 16 cm"
+      },
+      {
+        id: "meas5",
+        question: "Find the volume of a cylinder: radius 4 cm, height 10 cm",
+        answer: "502.4 cm³",
+        explanation: "V = πr²h = π × 4² × 10 = π × 16 × 10 = 160π ≈ 502.4 cm³"
+      },
+      {
+        id: "meas6",
+        question: "What type of angle is 90°?",
+        answer: "Right Angle",
+        explanation: "A 90° angle is exactly a right angle, forming a perfect corner."
+      },
+      {
+        id: "meas7",
+        question: "Find the circumference of a circle with radius 5 cm",
+        answer: "31.4 cm",
+        explanation: "C = 2πr = 2 × π × 5 = 10π ≈ 31.4 cm"
+      },
+      {
+        id: "meas8",
+        question: "What type of angle is 45°?",
+        answer: "Acute Angle",
+        explanation: "45° is less than 90°, so it's an acute angle."
       }
     ]
   }

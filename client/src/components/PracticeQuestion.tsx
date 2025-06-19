@@ -83,15 +83,6 @@ export function PracticeQuestion({ question, index, color }: PracticeQuestionPro
           </div>
         )}
       </div>
-
-      {!hasSubmitted && (
-        <button
-          onClick={() => setShowAnswer(!showAnswer)}
-          className="text-gray-600 hover:text-gray-800 underline text-sm"
-        >
-          Skip and show answer
-        </button>
-      )}
       
       <AnimatePresence>
         {showAnswer && (

@@ -15,8 +15,21 @@ export default function Algebra() {
         animate={{ opacity: 1, y: 0 }}
         className="bg-gradient-to-r from-purple-500 to-purple-600 text-white rounded-2xl p-8 mb-8"
       >
-        <h1 className="text-4xl font-bold mb-4 font-['Poppins']">Algebra</h1>
-        <p className="text-xl opacity-90">Expressions, solving equations, and graphing linear equations</p>
+        <div className="flex items-center mb-4">
+          {/* Algebra Logo */}
+          <div className="bg-white/20 backdrop-blur-sm rounded-full p-4 mr-6">
+            <svg width="48" height="48" viewBox="0 0 48 48" className="text-white">
+              <path fill="currentColor" d="M8 36h32v-4H8v4zm0-8h32v-4H8v4zm0-12v4h32v-4H8z"/>
+              <text x="24" y="32" textAnchor="middle" className="text-lg font-bold fill-white">
+                x²
+              </text>
+            </svg>
+          </div>
+          <div>
+            <h1 className="text-4xl font-bold font-['Poppins']">Algebra</h1>
+            <p className="text-xl opacity-90">Expressions, solving equations, and graphing linear equations</p>
+          </div>
+        </div>
       </motion.div>
 
       {/* Key Terms */}
